@@ -44,16 +44,19 @@ See [`examples/create_entity.py`](examples/create_entity.py) for a complete
 serialization round trip and [`docs/contract.md`](docs/contract.md) for
 Governed Entity Contract semantics.
 
-## Architecture
+## Governance
 
-- [`Runtime Package Architecture ADR`](docs/adr/ADR-0001-runtime-package-architecture.md)
-  defines the canonical future package architecture and dependency boundaries.
+- [`Dexter Constitution`](docs/governance/DEXTER_CONSTITUTION.md) defines the
+  foundational principles governing all Dexter architecture, engineering,
+  implementation, behavior, and future federation.
 - [`Dexter Engineering Standard`](docs/engineering/DEXTER_ENGINEERING_STANDARD.md)
   governs repository workflow, testing, review, architecture decisions, AI
   engineering, and releases.
 - [`Dexter Canonical Vocabulary`](docs/architecture/DEXTER_CANONICAL_VOCABULARY.md)
   is the authoritative terminology reference for architecture, contracts,
   documentation, and engineering work.
+- [`Runtime Package Architecture ADR`](docs/adr/ADR-0001-runtime-package-architecture.md)
+  defines the canonical future package architecture and dependency boundaries.
 
 ## Compatibility
 
