@@ -46,6 +46,13 @@ semantics, and
 [`ADR-0001`](docs/adr/ADR-0001-runtime-package-architecture.md) for the
 canonical future runtime package architecture and dependency boundaries.
 
+## Engineering
+
+The
+[`Dexter Engineering Standard`](docs/engineering/DEXTER_ENGINEERING_STANDARD.md)
+is the canonical handbook for repository workflow, testing, review,
+architecture decisions, AI engineering, and releases.
+
 ## Compatibility
 
 The package version and serialized contract version are independent. `schema_version` identifies the wire contract; version `1.0` is the only version accepted by the built-in validator in this release. Unknown JSON fields fail explicitly instead of being silently discarded.
