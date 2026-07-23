@@ -10,6 +10,19 @@ from .enums import AuthorityKind, LifecycleState, OperationalStatus, Relationshi
 from .references import Authority, EvidenceReference, ProvenanceReference, RelationshipReference
 
 
+def contract_to_dict(contract: Any) -> dict[str, Any]:
+    """Encode a dataclass contract using Dexter canonical JSON values."""
+    encoded = _encode(contract)
+    if not isinstance(encoded, dict):
+        raise TypeError("contract must encode to an object")
+    return encoded
+
+
+def contract_to_json(contract: Any, *, indent: int | None = None) -> str:
+    """Serialize a contract deterministically using Dexter canonical JSON."""
+    return json.dumps(contract_to_dict(contract), indent=indent, sort_keys=True, separators=None if indent else (",", ":"))
+
+
 def _encode(value: Any) -> Any:
     if isinstance(value, datetime):
         return value.isoformat().replace("+00:00", "Z")
@@ -25,11 +38,11 @@ def _encode(value: Any) -> Any:
 
 
 def entity_to_dict(entity: GovernedEntity) -> dict[str, Any]:
-    return _encode(entity)
+    return contract_to_dict(entity)
 
 
 def entity_to_json(entity: GovernedEntity, *, indent: int | None = None) -> str:
-    return json.dumps(entity_to_dict(entity), indent=indent, sort_keys=True, separators=None if indent else (",", ":"))
+    return contract_to_json(entity, indent=indent)
 
 
 def _datetime(value: str) -> datetime:
