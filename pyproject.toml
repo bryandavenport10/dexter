@@ -25,7 +25,7 @@ dependencies = []
 dev = ["build>=1"]
 
 [project.urls]
-Repository = "https://github.com/dexter-ai/dexter-core"
+Repository = "https://github.com/bryandavenport10/dexter"
 
 [tool.setuptools.packages.find]
 where = ["src"]

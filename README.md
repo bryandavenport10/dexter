@@ -40,7 +40,11 @@ assert entity.validate().is_valid
 print(entity.entity_id)
 ```
 
-See [`examples/create_entity.py`](examples/create_entity.py) for a complete serialization round trip and [`docs/contract.md`](docs/contract.md) for contract semantics.
+See [`examples/create_entity.py`](examples/create_entity.py) for a complete
+serialization round trip, [`docs/contract.md`](docs/contract.md) for contract
+semantics, and
+[`ADR-0001`](docs/adr/ADR-0001-runtime-package-architecture.md) for the
+canonical future runtime package architecture and dependency boundaries.
 
 ## Compatibility
 
