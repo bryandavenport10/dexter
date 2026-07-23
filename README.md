@@ -55,6 +55,15 @@ Governed Entity Contract semantics.
   is the authoritative terminology reference for architecture, contracts,
   documentation, and engineering work.
 
+## Contracts
+
+- [`Foundational Contract Conventions`](docs/contracts/FOUNDATIONAL_CONTRACT_CONVENTIONS.md)
+  defines the canonical identity, versioning, authority, evidence, reference,
+  lifecycle, validation, serialization, compatibility, and extension rules
+  inherited by every future Dexter contract.
+- [`Governed Entity Contract`](docs/contract.md) documents the currently
+  implemented governed entity semantics.
+
 ## Compatibility
 
 The package version and serialized contract version are independent. `schema_version` identifies the wire contract; version `1.0` is the only version accepted by the built-in validator in this release. Unknown JSON fields fail explicitly instead of being silently discarded.
