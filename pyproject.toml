@@ -32,3 +32,8 @@ where = ["src"]
 
 [tool.setuptools.package-data]
 dexter_core = ["py.typed"]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+]
