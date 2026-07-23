@@ -41,17 +41,19 @@ print(entity.entity_id)
 ```
 
 See [`examples/create_entity.py`](examples/create_entity.py) for a complete
-serialization round trip, [`docs/contract.md`](docs/contract.md) for contract
-semantics, and
-[`ADR-0001`](docs/adr/ADR-0001-runtime-package-architecture.md) for the
-canonical future runtime package architecture and dependency boundaries.
+serialization round trip and [`docs/contract.md`](docs/contract.md) for
+Governed Entity Contract semantics.
 
-## Engineering
+## Architecture
 
-The
-[`Dexter Engineering Standard`](docs/engineering/DEXTER_ENGINEERING_STANDARD.md)
-is the canonical handbook for repository workflow, testing, review,
-architecture decisions, AI engineering, and releases.
+- [`Runtime Package Architecture ADR`](docs/adr/ADR-0001-runtime-package-architecture.md)
+  defines the canonical future package architecture and dependency boundaries.
+- [`Dexter Engineering Standard`](docs/engineering/DEXTER_ENGINEERING_STANDARD.md)
+  governs repository workflow, testing, review, architecture decisions, AI
+  engineering, and releases.
+- [`Dexter Canonical Vocabulary`](docs/architecture/DEXTER_CANONICAL_VOCABULARY.md)
+  is the authoritative terminology reference for architecture, contracts,
+  documentation, and engineering work.
 
 ## Compatibility
 
