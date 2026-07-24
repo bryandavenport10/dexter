@@ -15,6 +15,11 @@ from .persistence import (
     DuplicateEvidenceError, EvidenceRepository, EvidenceRepositoryError,
     PostgreSQLEvidenceRepository, RepositoryHealth, RepositoryStatus,
 )
+from .ingestion import EvidenceIngestionService
+from .contracts.ingestion import (
+    IngestionError, IngestionErrorCategory, IngestionRequest, IngestionResult,
+    IngestionStatus,
+)
 
 __version__ = "0.1.0"
 
@@ -27,6 +32,8 @@ __all__ = [
     "Question", "QuestionEngine", "QuestionType",
     "DuplicateEvidenceError", "EvidenceRepository", "EvidenceRepositoryError",
     "PostgreSQLEvidenceRepository", "RepositoryHealth", "RepositoryStatus",
+    "EvidenceIngestionService", "IngestionError", "IngestionErrorCategory",
+    "IngestionRequest", "IngestionResult", "IngestionStatus",
     "ValidationReport", "ValidationRule", "Validator", "contract_to_dict", "contract_to_json", "entity_from_dict", "entity_from_json",
     "entity_to_dict", "entity_to_json", "new_entity_id",
 ]

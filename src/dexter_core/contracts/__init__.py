@@ -66,6 +66,16 @@ from .connector import (
     connector_metadata_from_dict, connector_metadata_from_json, connector_metadata_to_dict, connector_metadata_to_json,
     connector_status_from_dict, connector_status_from_json, connector_status_to_dict, connector_status_to_json,
 )
+from .ingestion import (
+    INGESTION_ERROR_CONTRACT_TYPE, INGESTION_REQUEST_CONTRACT_TYPE,
+    INGESTION_RESULT_CONTRACT_TYPE, INGESTION_VERSION, IngestionError,
+    IngestionErrorCategory, IngestionRequest, IngestionResult, IngestionStatus,
+    RepositoryStatus,
+    ingestion_error_from_dict, ingestion_error_from_json, ingestion_error_to_dict,
+    ingestion_error_to_json, ingestion_request_from_dict, ingestion_request_from_json,
+    ingestion_request_to_dict, ingestion_request_to_json, ingestion_result_from_dict,
+    ingestion_result_from_json, ingestion_result_to_dict, ingestion_result_to_json,
+)
 
 
 __all__ = [
@@ -109,4 +119,12 @@ __all__ = [
     "connector_error_from_dict", "connector_error_from_json", "connector_error_to_dict", "connector_error_to_json",
     "collection_context_from_dict", "collection_context_from_json", "collection_context_to_dict", "collection_context_to_json",
     "collection_result_from_dict", "collection_result_from_json", "collection_result_to_dict", "collection_result_to_json",
+    "INGESTION_ERROR_CONTRACT_TYPE", "INGESTION_REQUEST_CONTRACT_TYPE",
+    "INGESTION_RESULT_CONTRACT_TYPE", "INGESTION_VERSION", "IngestionError",
+    "IngestionErrorCategory", "IngestionRequest", "IngestionResult", "IngestionStatus",
+    "RepositoryStatus",
+    "ingestion_error_from_dict", "ingestion_error_from_json", "ingestion_error_to_dict",
+    "ingestion_error_to_json", "ingestion_request_from_dict", "ingestion_request_from_json",
+    "ingestion_request_to_dict", "ingestion_request_to_json", "ingestion_result_from_dict",
+    "ingestion_result_from_json", "ingestion_result_to_dict", "ingestion_result_to_json",
 ]

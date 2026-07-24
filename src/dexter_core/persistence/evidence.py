@@ -3,9 +3,9 @@ from __future__ import annotations
 from contextlib import AbstractContextManager
 from dataclasses import dataclass
 from datetime import datetime
-from enum import Enum
 from typing import Any, Callable, Protocol, runtime_checkable
 from ..contracts.evidence import Evidence, EvidenceType, evidence_from_json, evidence_to_json
+from ..contracts.ingestion import RepositoryStatus
 from ..contracts.observation import utc_timestamp
 
 class EvidenceRepositoryError(RuntimeError):
@@ -13,10 +13,6 @@ class EvidenceRepositoryError(RuntimeError):
 
 class DuplicateEvidenceError(EvidenceRepositoryError):
     """Raised when an immutable Evidence identity already exists."""
-
-class RepositoryStatus(str, Enum):
-    HEALTHY = "HEALTHY"
-    UNAVAILABLE = "UNAVAILABLE"
 
 @dataclass(frozen=True, slots=True)
 class RepositoryHealth:
