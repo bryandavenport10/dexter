@@ -45,6 +45,11 @@ from .evidence_correlation import (
     EvidenceCorrelation, evidence_correlation_from_dict, evidence_correlation_from_json,
     evidence_correlation_to_dict, evidence_correlation_to_json,
 )
+from .assessment import (
+    ASSESSMENT_CONTRACT_TYPE, ASSESSMENT_VERSION, Assessment, AssessmentConfidence,
+    AssessmentType, assessment_from_dict, assessment_from_json, assessment_to_dict,
+    assessment_to_json,
+)
 from .observation import ObservationType, ProxmoxObservation
 
 
@@ -74,5 +79,8 @@ __all__ = [
     "EVIDENCE_CORRELATION_CONTRACT_TYPE", "EVIDENCE_CORRELATION_VERSION", "CorrelationType",
     "EvidenceCorrelation", "evidence_correlation_from_dict", "evidence_correlation_from_json",
     "evidence_correlation_to_dict", "evidence_correlation_to_json",
+    "ASSESSMENT_CONTRACT_TYPE", "ASSESSMENT_VERSION", "Assessment",
+    "AssessmentConfidence", "AssessmentType", "assessment_from_dict",
+    "assessment_from_json", "assessment_to_dict", "assessment_to_json",
     "ObservationType", "ProxmoxObservation",
 ]
