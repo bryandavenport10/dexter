@@ -77,8 +77,19 @@ from .ingestion import (
     ingestion_result_from_json, ingestion_result_to_dict, ingestion_result_to_json,
 )
 
+from .query import (
+    QUERY_REQUEST_CONTRACT_TYPE, QUERY_RESPONSE_CONTRACT_TYPE, QUERY_VERSION,
+    QueryRequest, QueryResponse, QueryType, query_request_from_dict,
+    query_request_from_json, query_request_to_dict, query_request_to_json,
+    query_response_from_dict, query_response_from_json, query_response_to_dict,
+    query_response_to_json,
+)
 
 __all__ = [
+    "QUERY_REQUEST_CONTRACT_TYPE", "QUERY_RESPONSE_CONTRACT_TYPE", "QUERY_VERSION",
+    "QueryRequest", "QueryResponse", "QueryType", "query_request_from_dict", "query_request_from_json",
+    "query_request_to_dict", "query_request_to_json", "query_response_from_dict", "query_response_from_json",
+    "query_response_to_dict", "query_response_to_json",
     "EXECUTION_ATTEMPT_CONTRACT_TYPE", "EXECUTION_ATTEMPT_VERSION", "ExecutionAttempt", "ExecutionAttemptState",
     "execution_attempt_from_dict", "execution_attempt_from_json", "execution_attempt_to_dict", "execution_attempt_to_json",
     "EXECUTION_SESSION_CONTRACT_TYPE", "EXECUTION_SESSION_VERSION", "ExecutionSession", "ExecutionSessionState",

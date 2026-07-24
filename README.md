@@ -86,3 +86,8 @@ Apache License 2.0. See [`LICENSE`](LICENSE).
 ## Evidence persistence
 
 `PostgreSQLEvidenceRepository` stores validated connector-produced `Evidence` as immutable canonical JSON in PostgreSQL. The application composition root injects a connection factory; the repository owns no global connection and contains no credentials. Call `initialize_schema()` explicitly during deployment setup, then use identity, source, inclusive observation-time window, type, or relationship queries. Results have deterministic observation-time and identity ordering, and duplicate identities are rejected without replacement.
+
+
+## Query API
+
+`dexter_core.api:create_app` provides a FastAPI application for deterministic, read-only access to evidence, assessments, questions, answers, and repository status. Query endpoints require a canonical `request_identity`, UTC `requested_timestamp`, and `authority_reference`; they expose no write operations. OpenAPI is available at `/openapi.json`.
