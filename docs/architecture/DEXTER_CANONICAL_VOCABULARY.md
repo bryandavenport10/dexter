@@ -60,14 +60,14 @@ Vocabulary preserves: reality before abstraction; contracts before side effects;
 - **Purpose:** Performs authorized side effects and records what occurred.
 - **What it is:** Execution coordination and I/O behind Contracts.
 - **What it is NOT:** Governance policy, Contract meaning, or independent Verification.
-- **Relationships:** Manages Pending Jobs, Claims, Leases, Assignments, Attempts, and Events.
+- **Relationships:** Manages Pending Jobs, Claims, Leases, Assignments, Execution Sessions, and Runtime Events.
 
 ### Verification
 - **Definition:** Independent evaluation of execution claims and records against declared criteria and Evidence.
 - **Purpose:** Determines what may be accepted after Execution.
 - **What it is:** A post-execution Assessment with explicit Authority.
 - **What it is NOT:** Validation, Execution, Completion, or Learning.
-- **Relationships:** Consumes Completion, Execution Events, and Evidence and informs Outcomes.
+- **Relationships:** Consumes Completion, Runtime Events, and Evidence and informs Outcomes.
 
 ### Validation
 - **Definition:** Evaluation of a value against its Contract's structural and semantic rules.
@@ -142,16 +142,23 @@ Vocabulary preserves: reality before abstraction; contracts before side effects;
 ### Execution Attempt
 - **Definition:** One bounded try to perform assigned work.
 - **Purpose:** Distinguishes retries without changing admitted-work Identity.
-- **What it is:** A uniquely identifiable Runtime interval.
+- **What it is:** A uniquely identifiable governed try from which an Execution Session may be created.
 - **What it is NOT:** Entire Execution, Provider Assignment, or Outcome.
-- **Relationships:** Occurs under a Lease and Assignment, emits Events, and may produce Completion.
+- **Relationships:** Occurs under a Lease and Assignment and precedes an Execution Session.
 
-### Execution Event
-- **Definition:** An immutable, attributable record of a fact reported during the execution lifecycle.
+### Execution Session
+- **Definition:** The governed Runtime context created from a valid Execution Attempt.
+- **Purpose:** Owns runtime state while authorized behavior is performed.
+- **What it is:** A behavioral context that consumes Contracts and may emit Runtime Events.
+- **What it is NOT:** A Contract, replacement for Contracts, Execution Attempt, or Verification.
+- **Relationships:** Is created from an Execution Attempt, performs behavior, and may emit Runtime Events.
+
+### Runtime Event
+- **Definition:** An immutable, attributable observational record of behavior during an Execution Session.
 - **Purpose:** Preserves operational history for lineage and Verification.
-- **What it is:** A timestamped record linked to stable identities.
-- **What it is NOT:** Necessarily Evidence, a Decision, or verified Truth.
-- **Relationships:** Contributes to Operational Lineage and may support Verification.
+- **What it is:** A timestamped observation linked to stable session and lifecycle identities.
+- **What it is NOT:** Necessarily Evidence, a Decision, verified Truth, or a closed set of event kinds.
+- **Relationships:** Is emitted during an Execution Session, contributes to Operational Lineage, and may support Verification.
 
 ### Completion
 - **Definition:** An attributable claim that an Execution Attempt ended with specified reported results.
