@@ -73,6 +73,29 @@ The package version and serialized contract version are independent. `schema_ver
 
 ## Connector framework
 
+## Dexter CLI
+
+The installed `dexter` command is a thin, read-only operator interface to the Query API, governed ingestion service, and Question Engine. It exposes no infrastructure mutation commands and uses no LLM. Text output is the default; pass `--format json` for deterministic canonical JSON.
+
+```bash
+dexter version
+dexter health
+dexter evidence list --format json
+dexter evidence show dexter:evidence:<uuid>
+dexter ingest proxmox
+dexter ask "Which virtual machines show resource pressure?"
+```
+
+Query commands use the local empty read-only service by default or `DEXTER_QUERY_API_URL` when configured. Live Proxmox ingestion requires explicit application composition plus these references:
+
+- `DEXTER_POSTGRES_REFERENCE`
+- `DEXTER_PROXMOX_ENDPOINT`
+- `DEXTER_PROXMOX_AUTH_REFERENCE` using the protected `authref:` convention
+- `DEXTER_PROXMOX_SOURCE_SYSTEM_ID`
+- `DEXTER_AUTHORITY_REFERENCE`
+
+Configuration values are references, not an embedded secret store. The Proxmox connector remains GET-only, authentication values remain behind protected references, and credentials are never embedded in governed output.
+
 Infrastructure integrations implement the read-only `Connector` protocol in `dexter_core.connectors`. Governed metadata, collection context, result, status, capability, and error contracts remain in `dexter_core.contracts`; transport and normalization behavior remains in connector implementations.
 
 Callers supply a validated collection context and dependency-injected transport. Authentication is represented only by an `authref:` identifier: credentials and secret-bearing URLs must never enter governed output. Connectors declare static capabilities, implement `metadata`, `collect(context)`, and `health(context)`, and expose no write operations. Caller-supplied timestamps make results deterministic.
