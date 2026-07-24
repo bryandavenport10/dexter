@@ -21,6 +21,11 @@ from .provider_assignment import (
     PROVIDER_ASSIGNMENT_CONTRACT_TYPE, PROVIDER_ASSIGNMENT_VERSION, ProviderAssignment, ProviderAssignmentState,
     provider_assignment_from_dict, provider_assignment_from_json, provider_assignment_to_dict, provider_assignment_to_json,
 )
+from .runtime_event import (
+    RUNTIME_EVENT_CONTRACT_TYPE, RUNTIME_EVENT_VERSION, RuntimeEvent, RuntimeEventType,
+    runtime_event_from_dict, runtime_event_from_json, runtime_event_to_dict, runtime_event_to_json,
+)
+
 
 __all__ = [
     "EXECUTION_ATTEMPT_CONTRACT_TYPE", "EXECUTION_ATTEMPT_VERSION", "ExecutionAttempt", "ExecutionAttemptState",
@@ -31,6 +36,8 @@ __all__ = [
     "lease_from_dict", "lease_from_json", "lease_to_dict", "lease_to_json",
     "PROVIDER_ASSIGNMENT_CONTRACT_TYPE", "PROVIDER_ASSIGNMENT_VERSION", "ProviderAssignment", "ProviderAssignmentState",
     "provider_assignment_from_dict", "provider_assignment_from_json", "provider_assignment_to_dict", "provider_assignment_to_json",
+    "RUNTIME_EVENT_CONTRACT_TYPE", "RUNTIME_EVENT_VERSION", "RuntimeEvent", "RuntimeEventType",
+    "runtime_event_from_dict", "runtime_event_from_json", "runtime_event_to_dict", "runtime_event_to_json",
     "WORKER_CLAIM_CONTRACT_TYPE", "WORKER_CLAIM_VERSION", "ClaimState", "WorkerClaim",
     "worker_claim_from_dict", "worker_claim_from_json", "worker_claim_to_dict", "worker_claim_to_json",
 ]
