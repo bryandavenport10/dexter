@@ -12,6 +12,10 @@ from .execution_verification import (
     EXECUTION_VERIFICATION_CONTRACT_TYPE, EXECUTION_VERIFICATION_VERSION, ExecutionVerification, VerificationResult,
     execution_verification_from_dict, execution_verification_from_json, execution_verification_to_dict, execution_verification_to_json,
 )
+from .outcome_record import (
+    OUTCOME_RECORD_CONTRACT_TYPE, OUTCOME_RECORD_VERSION, OutcomeRecord, OutcomeResult,
+    outcome_record_from_dict, outcome_record_from_json, outcome_record_to_dict, outcome_record_to_json,
+)
 
 from .claim import (
     WORKER_CLAIM_CONTRACT_TYPE, WORKER_CLAIM_VERSION, ClaimState, WorkerClaim,
@@ -38,6 +42,8 @@ __all__ = [
     "execution_session_from_dict", "execution_session_from_json", "execution_session_to_dict", "execution_session_to_json",
     "EXECUTION_VERIFICATION_CONTRACT_TYPE", "EXECUTION_VERIFICATION_VERSION", "ExecutionVerification", "VerificationResult",
     "execution_verification_from_dict", "execution_verification_from_json", "execution_verification_to_dict", "execution_verification_to_json",
+    "OUTCOME_RECORD_CONTRACT_TYPE", "OUTCOME_RECORD_VERSION", "OutcomeRecord", "OutcomeResult",
+    "outcome_record_from_dict", "outcome_record_from_json", "outcome_record_to_dict", "outcome_record_to_json",
     "LEASE_CONTRACT_TYPE", "LEASE_VERSION", "Lease", "LeaseState",
     "lease_from_dict", "lease_from_json", "lease_to_dict", "lease_to_json",
     "PROVIDER_ASSIGNMENT_CONTRACT_TYPE", "PROVIDER_ASSIGNMENT_VERSION", "ProviderAssignment", "ProviderAssignmentState",
