@@ -50,6 +50,12 @@ from .assessment import (
     AssessmentType, assessment_from_dict, assessment_from_json, assessment_to_dict,
     assessment_to_json,
 )
+from .question import (
+    ANSWER_CONTRACT_TYPE, ANSWER_VERSION, QUESTION_CONTRACT_TYPE, QUESTION_VERSION,
+    Answer, AnswerConfidence, Question, QuestionType, answer_from_dict,
+    answer_from_json, answer_to_dict, answer_to_json, question_from_dict,
+    question_from_json, question_to_dict, question_to_json,
+)
 from .observation import ObservationType, ProxmoxObservation
 
 
@@ -82,5 +88,9 @@ __all__ = [
     "ASSESSMENT_CONTRACT_TYPE", "ASSESSMENT_VERSION", "Assessment",
     "AssessmentConfidence", "AssessmentType", "assessment_from_dict",
     "assessment_from_json", "assessment_to_dict", "assessment_to_json",
+    "QUESTION_CONTRACT_TYPE", "QUESTION_VERSION", "Question", "QuestionType",
+    "question_from_dict", "question_from_json", "question_to_dict", "question_to_json",
+    "ANSWER_CONTRACT_TYPE", "ANSWER_VERSION", "Answer", "AnswerConfidence",
+    "answer_from_dict", "answer_from_json", "answer_to_dict", "answer_to_json",
     "ObservationType", "ProxmoxObservation",
 ]
