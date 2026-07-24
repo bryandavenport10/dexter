@@ -82,3 +82,7 @@ The Proxmox connector retains legacy `collect()` observation and `ingest()` evid
 ## License
 
 Apache License 2.0. See [`LICENSE`](LICENSE).
+
+## Evidence persistence
+
+`PostgreSQLEvidenceRepository` stores validated connector-produced `Evidence` as immutable canonical JSON in PostgreSQL. The application composition root injects a connection factory; the repository owns no global connection and contains no credentials. Call `initialize_schema()` explicitly during deployment setup, then use identity, source, inclusive observation-time window, type, or relationship queries. Results have deterministic observation-time and identity ordering, and duplicate identities are rejected without replacement.
