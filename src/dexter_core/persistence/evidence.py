@@ -109,6 +109,10 @@ class PostgreSQLEvidenceRepository:
         rows = self._query(f"{_SELECT} WHERE evidence_id = %s", (_required_text(evidence_id, "evidence_id"),))
         return rows[0] if rows else None
 
+    def get_all(self) -> tuple[Evidence, ...]:
+        """Return every Evidence object in canonical repository order."""
+        return self._query(f"{_SELECT}{_ORDER}", ())
+
     def get_by_source(self, source_system: str, source_object: str | None = None) -> tuple[Evidence, ...]:
         source = _required_text(source_system, "source_system")
         if source_object is None:

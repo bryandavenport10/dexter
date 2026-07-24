@@ -10,6 +10,8 @@ from .contracts.evidence_correlation import CorrelationType, EvidenceCorrelation
 from .assessment import AssessmentEngine
 from .contracts.assessment import Assessment, AssessmentConfidence, AssessmentType
 from .question import QuestionEngine
+from .query import GovernedDataRepository, QueryService, QueryValidationError
+from .contracts.query import QueryRequest, QueryResponse, QueryType
 from .contracts.question import Answer, AnswerConfidence, Question, QuestionType
 from .persistence import (
     DuplicateEvidenceError, EvidenceRepository, EvidenceRepositoryError,
@@ -29,7 +31,8 @@ __all__ = [
     "CorrelationType", "EvidenceCorrelation", "EntityValidationError",
     "EvidenceReference", "GovernedEntity", "LifecycleState", "OperationalStatus",
     "ProvenanceReference", "RelationshipKind", "RelationshipReference", "ValidationIssue",
-    "Question", "QuestionEngine", "QuestionType",
+    "Question", "QuestionEngine", "QuestionType", "QueryRequest", "QueryResponse", "QueryType",
+    "GovernedDataRepository", "QueryService", "QueryValidationError",
     "DuplicateEvidenceError", "EvidenceRepository", "EvidenceRepositoryError",
     "PostgreSQLEvidenceRepository", "RepositoryHealth", "RepositoryStatus",
     "EvidenceIngestionService", "IngestionError", "IngestionErrorCategory",

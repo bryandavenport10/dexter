@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 set -eu
-PYTHONPATH=src python3 -m unittest discover -s tests -v
-PYTHONPATH=src python3 examples/create_entity.py >/dev/null
+PYTHONPATH=src uv run python -m unittest discover -s tests -v
+PYTHONPATH=src uv run python examples/create_entity.py >/dev/null
