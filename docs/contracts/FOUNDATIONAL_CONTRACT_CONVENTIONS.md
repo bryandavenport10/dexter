@@ -196,4 +196,4 @@ Each family shall inherit this document and add only its domain rules. Together,
 
 This document completes the Architecture Foundation. Implementation is now the default activity. No additional architecture work package shall be introduced unless implementation reveals a genuine architectural deficiency requiring documented governance justification.
 
-The next work package is **ENG-WP-043 — Worker Claim**.
+The next work package is **ENG-WP-047 — Execution Session**.

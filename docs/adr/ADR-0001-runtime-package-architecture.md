@@ -2,7 +2,7 @@
 
 - **Status:** Accepted
 - **Date:** 2026-07-23
-- **Artifact:** ARCH-WP-006
+- **Artifact:** ARCH-WP-006; refined by ARCH-WP-012
 
 ## Context
 
@@ -82,6 +82,47 @@ reverse dependency of lower layers.
 
 “Execution” names the end-to-end domain, not a catch-all package. Cross-stage immutable values belong to `contracts`; policy and decisions to `governance`; coordination and I/O to `runtime`; independent evaluation to `verification`; verified-result consumption to `learning`.
 
+### Governed runtime lifecycle
+
+Implementation of Worker Claim, Lease, Provider Assignment, and Execution Attempt revealed that runtime execution is not a single action. It is an observable, governed lifecycle:
+
+```text
+Pending Job
+    ↓
+Worker Claim
+    ↓
+Lease
+    ↓
+Provider Assignment
+    ↓
+Execution Attempt
+=========================
+Governance Boundary
+=========================
+    ↓
+Execution Session
+    ↓
+Runtime Events
+    ↓
+Execution Verification
+    ↓
+Outcome Tracking
+    ↓
+Operational Learning
+```
+
+The governance boundary separates the contracts that establish permission and scope from the runtime behavior performed under that authority. An **Execution Session** is the governed runtime context created from a valid Execution Attempt. It owns runtime state, may emit Runtime Events, consumes the applicable contracts, and does not replace or redefine them.
+
+**Runtime Events** are observational records of behavior during an Execution Session. Event kinds may include `started`, `heartbeat`, `progress`, `warning`, `paused`, `resumed`, `stdout`, `stderr`, `completed`, `failed`, and `cancelled`. These are illustrative rather than a closed event vocabulary, and this refinement introduces no event implementation.
+
+The governing principle is:
+
+- Contracts establish authority.
+- Execution Session performs behavior.
+- Runtime Events observe behavior.
+- Verification evaluates behavior.
+- Learning consumes verified outcomes.
+
 ## Package map
 
 Labels describe readiness, not directories to create now.
@@ -92,10 +133,10 @@ Labels describe readiness, not directories to create now.
 | `contracts/` | **INTRODUCE NEXT** | Pure execution-domain values and wire contracts; begin with conventions and submission. |
 | `contracts/submission.py` | **INTRODUCE NEXT** | Canonical request, constraints, reference/handle inputs, idempotency identity. |
 | `contracts/admission.py`, `pending.py`, `claim.py`, `lease.py` | **RESERVED** | Immutable decisions and lifecycle facts. |
-| `contracts/provider.py`, `attempt.py`, `events.py`, `completion.py` | **RESERVED** | Capabilities/assignments, attempts, events, completion claims. |
+| `contracts/provider.py`, `attempt.py`, `events.py`, `completion.py` | **RESERVED** | Capabilities/assignments, attempts, observational event records, completion claims. |
 | `contracts/verification.py`, `outcome.py` | **RESERVED** | Verification claims/results and normalized outcomes. |
 | `governance/` | **RESERVED** | Pure policy evaluation and authoritative admission decisions; no execution I/O. |
-| `runtime/` | **RESERVED** | Pending coordination, claim/lease mechanics, provider adapters, workers, event capture. |
+| `runtime/` | **RESERVED** | Execution Session state and behavior, pending coordination, claim/lease mechanics, provider adapters, workers, and event emission/capture. |
 | `verification/` | **RESERVED** | Independent evaluation of completion claims against evidence and policy. |
 | `operational_lineage/` | **RESERVED** | Dexter-owned lifecycle correlation and append-only projection. |
 | `learning/` | **DEFERRED** | Consume verified outcomes and operational lineage, not raw claims. |
@@ -118,7 +159,9 @@ No empty packages are created. A pending job is admitted work awaiting claim; a 
 | Pending jobs | `contracts.pending` |
 | Claims and leases | Contracts in `contracts`; coordination in `runtime` |
 | Provider capabilities and assignments | `contracts.provider`; discovery/invocation in `runtime` |
-| Attempts and runtime events | Contracts in `contracts`; orchestration/capture in `runtime` |
+| Execution attempts | `contracts.attempt` |
+| Execution Sessions | Runtime, created from valid Execution Attempts and consuming applicable contracts |
+| Runtime Events | Observational records in `contracts`; emission/capture in `runtime` |
 | Completion claims | `contracts.completion`; emitted by `runtime` |
 | Verification claims and outcomes | `contracts.verification`; decisions in `verification` |
 | Normalized outcomes | `contracts.outcome`; produced after verification |
@@ -128,7 +171,7 @@ No empty packages are created. A pending job is admitted work awaiting claim; a 
 
 ## Architectural answers and terminology
 
-`dexter_core.execution` will not be a catch-all. Canonical lifecycle values live in focused `contracts` modules. Admission evaluation belongs to governance; claim/lease coordination, provider interaction, attempts, and event capture to runtime; verification logic to verification.
+`dexter_core.execution` will not be a catch-all. Canonical lifecycle values live in focused `contracts` modules. Admission evaluation belongs to governance; claim/lease coordination, provider interaction, Execution Sessions, and event capture to runtime; verification logic to verification. Execution Attempts establish bounded, governed tries; they are not themselves the runtime context that performs behavior.
 
 Authority is a combination: a universal foundational declaration/reference, an explicit decision property, and potentially a later domain package for resolution and policy. No new authority package is warranted today. An authority declaration identifies an asserter; it does not itself grant runtime capability.
 
@@ -196,19 +239,13 @@ Options A, B, and D are rejected above. Moving current primitives into `contract
 
 ## Future work sequence
 
-1. Foundational contract conventions: identity/correlation, schema families, time, authority, states, references, and codecs.
-2. Canonical execution submission contract.
-3. Admission decision contract and deterministic evaluation.
-4. Pending-job contract.
-5. Worker claim.
-6. Lease.
-7. Provider capability and assignment.
-8. Execution attempt.
-9. Runtime event model.
-10. Completion claim.
-11. Execution verification.
-12. Outcome tracking and operational lineage.
-13. Operational learning from verified outcomes.
+The implementation roadmap following the completed Worker Claim, Lease, Provider Assignment, and Execution Attempt contracts is:
+
+1. **ENG-WP-047 — Execution Session**
+2. **ENG-WP-048 — Runtime Events**
+3. **ENG-WP-049 — Execution Verification**
+4. **ENG-WP-050 — Outcome Tracking**
+5. **ENG-WP-051 — Operational Learning**
 
 Each step validates terminology against observed requirements before the next layer.
 
