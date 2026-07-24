@@ -40,6 +40,11 @@ from .runtime_event import (
     runtime_event_from_dict, runtime_event_from_json, runtime_event_to_dict, runtime_event_to_json,
 )
 from .evidence import (EVIDENCE_CONTRACT_TYPE, EVIDENCE_VERSION, Evidence, EvidenceType, SourceAuthority, evidence_from_dict, evidence_from_json, evidence_to_dict, evidence_to_json)
+from .evidence_correlation import (
+    EVIDENCE_CORRELATION_CONTRACT_TYPE, EVIDENCE_CORRELATION_VERSION, CorrelationType,
+    EvidenceCorrelation, evidence_correlation_from_dict, evidence_correlation_from_json,
+    evidence_correlation_to_dict, evidence_correlation_to_json,
+)
 from .observation import ObservationType, ProxmoxObservation
 
 
@@ -66,5 +71,8 @@ __all__ = [
     "worker_claim_from_dict", "worker_claim_from_json", "worker_claim_to_dict", "worker_claim_to_json",
     "EVIDENCE_CONTRACT_TYPE", "EVIDENCE_VERSION", "Evidence", "EvidenceType", "SourceAuthority",
     "evidence_from_dict", "evidence_from_json", "evidence_to_dict", "evidence_to_json",
+    "EVIDENCE_CORRELATION_CONTRACT_TYPE", "EVIDENCE_CORRELATION_VERSION", "CorrelationType",
+    "EvidenceCorrelation", "evidence_correlation_from_dict", "evidence_correlation_from_json",
+    "evidence_correlation_to_dict", "evidence_correlation_to_json",
     "ObservationType", "ProxmoxObservation",
 ]
