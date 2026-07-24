@@ -57,6 +57,15 @@ from .question import (
     question_from_json, question_to_dict, question_to_json,
 )
 from .observation import ObservationType, ProxmoxObservation
+from .connector import (
+    CollectionStatus, ConnectorCapability, ConnectorCollectionContext, ConnectorCollectionResult,
+    ConnectorError, ConnectorErrorCategory, ConnectorMetadata, ConnectorStatus, ConnectorStatusRecord,
+    collection_context_from_dict, collection_context_from_json, collection_context_to_dict, collection_context_to_json,
+    collection_result_from_dict, collection_result_from_json, collection_result_to_dict, collection_result_to_json,
+    connector_error_from_dict, connector_error_from_json, connector_error_to_dict, connector_error_to_json,
+    connector_metadata_from_dict, connector_metadata_from_json, connector_metadata_to_dict, connector_metadata_to_json,
+    connector_status_from_dict, connector_status_from_json, connector_status_to_dict, connector_status_to_json,
+)
 
 
 __all__ = [
@@ -93,4 +102,11 @@ __all__ = [
     "ANSWER_CONTRACT_TYPE", "ANSWER_VERSION", "Answer", "AnswerConfidence",
     "answer_from_dict", "answer_from_json", "answer_to_dict", "answer_to_json",
     "ObservationType", "ProxmoxObservation",
+    "ConnectorCapability", "ConnectorMetadata", "ConnectorStatus", "ConnectorStatusRecord",
+    "CollectionStatus", "ConnectorCollectionContext", "ConnectorCollectionResult", "ConnectorError", "ConnectorErrorCategory",
+    "connector_metadata_from_dict", "connector_metadata_from_json", "connector_metadata_to_dict", "connector_metadata_to_json",
+    "connector_status_from_dict", "connector_status_from_json", "connector_status_to_dict", "connector_status_to_json",
+    "connector_error_from_dict", "connector_error_from_json", "connector_error_to_dict", "connector_error_to_json",
+    "collection_context_from_dict", "collection_context_from_json", "collection_context_to_dict", "collection_context_to_json",
+    "collection_result_from_dict", "collection_result_from_json", "collection_result_to_dict", "collection_result_to_json",
 ]
