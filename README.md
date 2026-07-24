@@ -71,6 +71,14 @@ Governed Entity Contract semantics.
 
 The package version and serialized contract version are independent. `schema_version` identifies the wire contract; version `1.0` is the only version accepted by the built-in validator in this release. Unknown JSON fields fail explicitly instead of being silently discarded.
 
+## Connector framework
+
+Infrastructure integrations implement the read-only `Connector` protocol in `dexter_core.connectors`. Governed metadata, collection context, result, status, capability, and error contracts remain in `dexter_core.contracts`; transport and normalization behavior remains in connector implementations.
+
+Callers supply a validated collection context and dependency-injected transport. Authentication is represented only by an `authref:` identifier: credentials and secret-bearing URLs must never enter governed output. Connectors declare static capabilities, implement `metadata`, `collect(context)`, and `health(context)`, and expose no write operations. Caller-supplied timestamps make results deterministic.
+
+The Proxmox connector retains legacy `collect()` observation and `ingest()` evidence methods. Passing a context to `collect(context)` uses the governed boundary while preserving its GET-only transport.
+
 ## License
 
 Apache License 2.0. See [`LICENSE`](LICENSE).
