@@ -11,6 +11,10 @@ from .assessment import AssessmentEngine
 from .contracts.assessment import Assessment, AssessmentConfidence, AssessmentType
 from .question import QuestionEngine
 from .contracts.question import Answer, AnswerConfidence, Question, QuestionType
+from .persistence import (
+    DuplicateEvidenceError, EvidenceRepository, EvidenceRepositoryError,
+    PostgreSQLEvidenceRepository, RepositoryHealth, RepositoryStatus,
+)
 
 __version__ = "0.1.0"
 
@@ -21,6 +25,8 @@ __all__ = [
     "EvidenceReference", "GovernedEntity", "LifecycleState", "OperationalStatus",
     "ProvenanceReference", "RelationshipKind", "RelationshipReference", "ValidationIssue",
     "Question", "QuestionEngine", "QuestionType",
+    "DuplicateEvidenceError", "EvidenceRepository", "EvidenceRepositoryError",
+    "PostgreSQLEvidenceRepository", "RepositoryHealth", "RepositoryStatus",
     "ValidationReport", "ValidationRule", "Validator", "contract_to_dict", "contract_to_json", "entity_from_dict", "entity_from_json",
     "entity_to_dict", "entity_to_json", "new_entity_id",
 ]
